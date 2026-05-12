@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- TITLEe -->
+        <!-- TITLE -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
             android:textSize="28sp"
             android:textColor="#4E4E4E"/>
 
-        <!-- USERs INPUT -->
+        <!-- USERs INPUTt -->
         <EditText
             android:id="@+id/etName"
             android:layout_width="match_parent"
@@ -49,7 +49,7 @@
             android:padding="16dp"
             android:background="#FFFFFF"/>
 
-        <!-- PRODUCT INFOO -->
+        <!-- PRODUCTT INFOO -->
         <TextView
             android:id="@+id/tvProductName"
             android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
             android:textColor="#555"
             android:layout_marginTop="6dp"/>
 
-        <!-- QUANTITY -->
+        <!-- QUANTITYY -->
         <EditText
             android:id="@+id/etQuantity"
             android:layout_width="match_parent"
@@ -80,7 +80,7 @@
             android:paddingStart="16dp"
             android:background="#FFFFFF"/>
 
-        <!-- TOTAL -->
+        <!-- TOTALL -->
         <TextView
             android:id="@+id/tvTotal"
             android:layout_width="wrap_content"
