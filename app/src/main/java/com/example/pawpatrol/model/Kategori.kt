@@ -1,4 +1,6 @@
 package com.example.pawpatrol.model
 
-class Kategori {
-}
+data class Kategori(
+    val id: Int,
+    val namaKategori: String
+)

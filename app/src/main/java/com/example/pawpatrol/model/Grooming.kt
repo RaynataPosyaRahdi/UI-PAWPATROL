@@ -1,4 +1,8 @@
 package com.example.pawpatrol.model
 
-class Grooming {
-}
+data class Grooming(
+    val id: Int,
+    val namaLayanan: String,
+    val harga: Int,
+    val deskripsi: String?
+)
