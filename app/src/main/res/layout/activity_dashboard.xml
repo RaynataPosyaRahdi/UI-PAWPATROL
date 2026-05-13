@@ -1,213 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D6F0FF">
+    android:background="#F5F6FB">
 
-    <LinearLayout
+    <!-- SCROLL CONTENT -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <!-- LOGO -->
+        android:layout_height="match_parent"
+        android:layout_above="@id/fabCart">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <ImageView
-                android:id="@+id/imgLogo"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@drawable/ic_launcher_foreground"
-                tools:src="@drawable/desain_tanpa_judul__1_" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- TOP PROFILE -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PawPatrol "
-                android:textSize="32sp"
-                android:textStyle="bold"
-                android:textColor="#4E4E4E"
-                android:layout_marginTop="10dp"/>
+                android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:padding="4dp"
+                    android:background="@drawable/circle_bg"
+                    android:src="@drawable/ic_launcher_foreground"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Welcome Back"
+                        android:textColor="#9A9A9A"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="James Noah"
+                        android:textColor="#222222"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="8dp"
+                    android:background="@drawable/circle_bg"
+                    android:src="@android:drawable/ic_menu_my_calendar"/>
+            </LinearLayout>
+
+            <!-- SEARCH -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/search_bg"
+                    android:hint="search on your list ?"
+                    android:padding="14dp"
+                    android:textSize="14sp"/>
+
+                <ImageButton
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/filter_bg"
+                    android:src="@android:drawable/ic_menu_sort_by_size"/>
+            </LinearLayout>
+
+            <!-- CATEGORY -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pet Care and Adoption"
-                android:textSize="16sp"
-                android:textColor="#777777"
-                android:layout_marginTop="4dp"/>
+                android:layout_marginTop="18dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:backgroundTint="#000000"
+                        android:text="All product"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:text="Petadopt"
+                        android:textAllCaps="false"
+                        android:textColor="#555555"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:text="Petgrooming"
+                        android:textAllCaps="false"
+                        android:textColor="#555555"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:text="Petshop"
+                        android:textAllCaps="false"
+                        android:textColor="#555555"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- PROMO CARD -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="22dp"
+                app:cardBackgroundColor="#FFD43B"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Get 30% off on Whiskas"
+                            android:textColor="#FFFFFF"
+                            android:textSize="22sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Limited time offer"
+                            android:textColor="#000000"
+                            android:textSize="14sp"/>
+
+                        <Button
+                            android:layout_width="140dp"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="#000000"
+                            android:text="Shop now"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFFF"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="170dp"
+                        android:layout_height="170dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/desain_tanpa_judul__2_"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- FEATURE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Featured Product"
+                    android:textColor="#222222"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="more"
+                    android:textColor="#777777"/>
+            </LinearLayout>
+
+            <!-- PRODUCT LIST -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false"
+                android:paddingBottom="100dp"/>
 
         </LinearLayout>
+    </ScrollView>
 
-        <!-- TITLE -->
+    <!-- FLOATING BUTTON -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/outline_add_24"
+        app:backgroundTint="#FFD43B"
+        app:tint="#FFFFFF"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Our Services"
-            android:textStyle="bold"
-            android:textSize="24sp"
-            android:textColor="#4E4E4E"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="14dp"/>
-
-        <!-- CARD MAKANAN -->
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="18dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="#FFD6E8">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="20dp"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:src="@drawable/desain_tanpa_judul__2_" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pet Food"
-                        android:textStyle="bold"
-                        android:textSize="24sp"
-                        android:textColor="#4E4E4E"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Healthy food for cats and dogs"
-                        android:textSize="14sp"
-                        android:textColor="#666666"
-                        android:layout_marginTop="6dp"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- CARD GROOMING -->
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="18dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="#FFF4C2">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="20dp"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:src="@drawable/grooming1" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pet Grooming"
-                        android:textStyle="bold"
-                        android:textSize="24sp"
-                        android:textColor="#4E4E4E"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Professional grooming service"
-                        android:textSize="14sp"
-                        android:textColor="#666666"
-                        android:layout_marginTop="6dp"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- CARD ADOPT -->
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="#D9FFD6">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="20dp"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:src="@drawable/ado_t" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pet Adopt"
-                        android:textStyle="bold"
-                        android:textSize="24sp"
-                        android:textColor="#4E4E4E"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Find your new best friend"
-                        android:textSize="14sp"
-                        android:textColor="#666666"
-                        android:layout_marginTop="6dp"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-
-</ScrollView>
+</RelativeLayout>

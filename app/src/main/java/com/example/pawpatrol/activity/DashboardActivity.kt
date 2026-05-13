@@ -2,6 +2,8 @@ package com.example.pawpatrol.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.example.pawpatrol.R
@@ -25,45 +27,110 @@ class DashboardActivity : AppCompatActivity() {
         cardAdopt = findViewById(R.id.cardAdopt)
 
         // ==============================
-        // PINDAH KE FOOD ACTIVITY
+        // ANIMASI
+        // ==============================
+
+        val anim: Animation =
+            AnimationUtils.loadAnimation(
+                this,
+                R.anim.slide_in
+            )
+
+        cardFood.startAnimation(anim)
+        cardGrooming.startAnimation(anim)
+        cardAdopt.startAnimation(anim)
+
+        // ==============================
+        // FOOD ACTIVITY
         // ==============================
 
         cardFood.setOnClickListener {
 
-            val intent = Intent(
-                this,
-                FoodActivity::class.java
-            )
+            it.animate()
+                .scaleX(0.95f)
+                .scaleY(0.95f)
+                .setDuration(100)
+                .withEndAction {
 
-            startActivity(intent)
+                    it.animate()
+                        .scaleX(1f)
+                        .scaleY(1f)
+                        .duration = 100
+
+                    startActivity(
+                        Intent(
+                            this,
+                            FoodActivity::class.java
+                        )
+                    )
+
+                    overridePendingTransition(
+                        android.R.anim.fade_in,
+                        android.R.anim.fade_out
+                    )
+                }
         }
 
         // ==============================
-        // PINDAH KE GROOMING ACTIVITY
+        // GROOMING ACTIVITY
         // ==============================
 
         cardGrooming.setOnClickListener {
 
-            val intent = Intent(
-                this,
-                GroomingActivity::class.java
-            )
+            it.animate()
+                .scaleX(0.95f)
+                .scaleY(0.95f)
+                .setDuration(100)
+                .withEndAction {
 
-            startActivity(intent)
+                    it.animate()
+                        .scaleX(1f)
+                        .scaleY(1f)
+                        .duration = 100
+
+                    startActivity(
+                        Intent(
+                            this,
+                            GroomingActivity::class.java
+                        )
+                    )
+
+                    overridePendingTransition(
+                        android.R.anim.fade_in,
+                        android.R.anim.fade_out
+                    )
+                }
         }
 
         // ==============================
-        // PINDAH KE CHECKOUT / ADOPT
+        // ADOPT / CHECKOUT ACTIVITY
         // ==============================
 
         cardAdopt.setOnClickListener {
 
-            val intent = Intent(
-                this,
-                CheckoutActivity::class.java
-            )
+            it.animate()
+                .scaleX(0.95f)
+                .scaleY(0.95f)
+                .setDuration(100)
+                .withEndAction {
 
-            startActivity(intent)
+                    it.animate()
+                        .scaleX(1f)
+                        .scaleY(1f)
+                        .duration = 100
+
+                    startActivity(
+                        Intent(
+                            this,
+                            CheckoutActivity::class.java
+                        )
+                    )
+
+                    overridePendingTransition(
+                        android.R.anim.fade_in,
+                        android.R.anim.fade_out
+                    )
+                }
         }
     }
 }
