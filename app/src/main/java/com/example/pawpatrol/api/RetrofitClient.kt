@@ -1,24 +1,24 @@
 package com.example.pawpatrol.api
 
+import android.content.Context
 import com.example.pawpatrol.utils.Constant
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ApiClient {
+object RetrofitClient {
 
-    private val loggingInterceptor =
-        HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
+    fun create(
+        context: Context
+    ): ApiService {
 
-    private val client = OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
-        .build()
+        val client = OkHttpClient.Builder()
+            .addInterceptor(
+                AuthInterceptor(context)
+            )
+            .build()
 
-    val apiService: ApiService by lazy {
-        Retrofit.Builder()
+        return Retrofit.Builder()
             .baseUrl(Constant.BASE_URL)
             .client(client)
             .addConverterFactory(
