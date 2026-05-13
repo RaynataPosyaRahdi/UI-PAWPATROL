@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F6FB">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- TITLE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambah Produk "
+            android:textStyle="bold"
+            android:textSize="28sp"
+            android:textColor="#222222"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambahkan produk baru PawPatrol"
+            android:textSize="14sp"
+            android:textColor="#777777"
+            android:layout_marginTop="4dp"/>
+
+        <!-- FORM -->
+        <LinearLayout
+            android:id="@+id/formLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical">
+
+            <!-- NAMA -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="#FFD43B"
+                app:boxStrokeWidth="1dp"
+
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusTopStart="14dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNama"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Nama Produk"
+                    android:paddingHorizontal="14dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#B0B0B0"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- JENIS -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="#FFD43B"
+                app:boxStrokeWidth="1dp"
+
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusTopStart="14dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etJenis"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Jenis Produk"
+                    android:paddingHorizontal="14dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#B0B0B0"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- DESKRIPSI -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginTop="12dp"
+
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="#FFD43B"
+                app:boxStrokeWidth="1dp"
+
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusTopStart="14dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDeskripsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:hint="Deskripsi Produk"
+                    android:padding="14dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#B0B0B0"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- HARGA -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="#FFD43B"
+                app:boxStrokeWidth="1dp"
+
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusTopStart="14dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etHarga"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Harga Produk"
+                    android:inputType="number"
+                    android:paddingHorizontal="14dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#B0B0B0"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- RATING -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kualitas Produk"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="18dp"/>
+
+            <RatingBar
+                android:id="@+id/ratingProduk"
+                style="?android:attr/ratingBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:numStars="5"
+                android:progressTint="#000000"
+                android:progressBackgroundTint="#D3D3D3"
+                android:rating="4"
+                android:stepSize="1"/>
+
+            <!-- BUTTON -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTambahProduk"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:text="Tambah Produk"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:backgroundTint="#FFD43B"
+                app:cornerRadius="14dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
