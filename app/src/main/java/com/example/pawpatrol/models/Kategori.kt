@@ -1,4 +1,4 @@
-package com.example.pawpatrol.model
+package com.example.pawpatrol.models
 
 data class Kategori(
     val id: Int,
