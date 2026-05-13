@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ViewBinding
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -38,6 +40,7 @@ android {
     }
 
     buildFeatures {
+        viewBinding = true
         compose = true
     }
 }
