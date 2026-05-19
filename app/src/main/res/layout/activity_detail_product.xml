@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F7FB">
+
+    <!-- SCROLLABLE CONTENT -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- TOP IMAGE -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="340dp">
+
+                <ImageView
+                    android:id="@+id/imgDetailProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/ic_launcher_background" />
+
+                <!-- DARK OVERLAY -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#22000000" />
+
+                <!-- BACK BUTTON -->
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_margin="20dp"
+                    android:padding="10dp"
+                    android:background="@drawable/bg_circle_white"
+                    android:src="@android:drawable/ic_media_previous"
+                    app:tint="#222222" />
+            </FrameLayout>
+
+            <!-- CONTENT -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-30dp"
+                android:background="@drawable/bg_top_radius_white"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- PRODUCT NAME -->
+                <TextView
+                    android:id="@+id/txtDetailName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#222222"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    tools:text="Whiskas Adult Tuna 1Kg" />
+
+                <!-- STOCK -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#E8F5E9"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📦"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtDetailStock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:textColor="#4CAF50"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        tools:text="Stock : 15" />
+                </LinearLayout>
+
+                <!-- PRICE CARD -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    app:cardBackgroundColor="#F3F5FA"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="18dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Product Price"
+                                android:textColor="#9A9A9A"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/txtDetailPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:textColor="#4CAF50"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                tools:text="Rp 85.000" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@android:drawable/star_big_on"
+                            app:tint="#FFD54F" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- DESCRIPTION TITLE -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:text="Product Description"
+                    android:textColor="#222222"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- DESCRIPTION -->
+                <TextView
+                    android:id="@+id/txtDetailDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="6dp"
+                    android:textColor="#666666"
+                    android:textSize="14sp"
+                    tools:text="Makanan kucing premium dengan kandungan nutrisi lengkap untuk kesehatan dan pertumbuhan harian kucing kesayangan Anda." />
+
+                <!-- SPACING -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- BOTTOM ACTION -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom"
+        android:background="#FFFFFF"
+        android:elevation="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
+        <!-- EDIT BUTTON -->
+        <ImageView
+            android:id="@+id/btnEdit"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_circle_light"
+            android:padding="12dp"
+            android:src="@android:drawable/ic_menu_edit"
+            app:tint="#4CAF50" />
+
+        <!-- DELETE BUTTON -->
+        <ImageView
+            android:id="@+id/btnDelete"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_circle_light"
+            android:padding="12dp"
+            android:src="@android:drawable/ic_menu_delete"
+            app:tint="#F44336" />
+
+<!--        &lt;!&ndash; ADD TO CART &ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/btnCart"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:layout_marginStart="12dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:backgroundTint="#EEEEEE"-->
+<!--            android:text="Add to Cart"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="#222222"-->
+<!--            android:textSize="14sp"-->
+<!--            android:textStyle="bold" />-->
+
+        <!-- CHECKOUT -->
+        <Button
+            android:id="@+id/btnCheckout"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FFD43B"
+            android:text="Checkout"
+            android:textAllCaps="false"
+            android:textColor="@color/textDark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

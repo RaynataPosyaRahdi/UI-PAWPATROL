@@ -2,12 +2,12 @@ package com.example.pawpatrol.api
 
 import com.example.pawpatrol.models.animal.Animals
 import com.example.pawpatrol.models.animal.AnimalCreateRequest
-import com.example.pawpatrol.models.grooming.GroomingBooking
-import com.example.pawpatrol.models.grooming.GroomingBookingRequest
-import com.example.pawpatrol.models.grooming.GroomingServices
+import com.example.pawpatrol.models.order.CreateAnimalAdoptionRequest
+import com.example.pawpatrol.models.order.CreateOrderRequest
 import com.example.pawpatrol.models.order.Orders
 import com.example.pawpatrol.models.product.Products
 import com.example.pawpatrol.models.product.ProductCreateRequest
+import com.example.pawpatrol.models.product.ProductOrderCreateRequest
 import com.example.pawpatrol.models.user.LoginRequest
 import com.example.pawpatrol.models.user.LoginResponse
 import com.example.pawpatrol.models.user.Users
@@ -47,8 +47,9 @@ interface ApiService {
     // =================================================
 
     @GET("animals")
-    suspend fun getAnimals():
-            Response<List<Animals>>
+    suspend fun getAnimals(
+        @Query("status") status: String
+    ): Response<List<Animals>>
 
     @GET("animals/{id}")
     suspend fun getAnimalById(
@@ -60,6 +61,16 @@ interface ApiService {
         @Body request: AnimalCreateRequest
     ): Response<Animals>
 
+    @PUT("animals/{animal_id}")
+    suspend fun updateAnimal(
+        @Path("animal_id") animalId: Int,
+        @Body request: AnimalCreateRequest
+    ): Response<Animals>
+
+    @DELETE("animals/{id}")
+    suspend fun deleteAnimal(
+        @Path("id") id: Int
+    ): Response<Unit>
 
     // =================================================
     // PRODUCTS
@@ -79,32 +90,39 @@ interface ApiService {
         @Body request: ProductCreateRequest
     ): Response<Products>
 
+    @PUT("products/{product_id}")
+    suspend fun updateProduct(
+        @Path("product_id") productId: Int,
+        @Body request: ProductCreateRequest
+    ): Response<Products>
+
+    @DELETE("products/{id}")
+    suspend fun deleteProduct(
+        @Path("id") id: Int
+    ): Response<Unit>
+
 
     // =================================================
-    // GROOMING SERVICES
+    // CARTS
     // =================================================
-
-    @GET("grooming-services")
-    suspend fun getGroomingServices():
-            Response<List<GroomingServices>>
-
-
-    // =================================================
-    // GROOMING BOOKINGS
-    // =================================================
-
-    @POST("grooming-bookings")
-    suspend fun createBooking(
-        @Body request: GroomingBookingRequest
-    ): Response<GroomingBooking>
 
 
     // =================================================
     // ORDERS
     // =================================================
 
-    @GET("orders")
-    suspend fun getOrders():
-            Response<List<Orders>>
+    @POST("orders")
+    suspend fun createOrder(
+        @Body request: CreateOrderRequest
+    ): Response<Orders>
 
+    @POST("animal-adoptions")
+    suspend fun createAnimalAdopt(
+        @Body request: CreateAnimalAdoptionRequest
+    ): Response<CreateAnimalAdoptionRequest>
+
+    @POST("order-products")
+    suspend fun createOrderProduct(
+        @Body request: ProductOrderCreateRequest
+    ): Response<ProductOrderCreateRequest>
 }

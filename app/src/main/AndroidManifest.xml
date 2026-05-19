@@ -26,7 +26,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity"/>
+        <activity android:name=".ui.DashboardActivity"/>
+        <activity android:name=".ui.auth.register.RegisterActivity"/>
+        <activity android:name=".ui.animal.DetailAnimalActivity"/>
+        <activity android:name=".ui.animal.AddAnimalActivity"/>
+        <activity android:name=".ui.animal.EditAnimalActivity"/>
+        <activity android:name=".ui.product.DetailProductActivity"/>
+        <activity android:name=".ui.product.AddProductActivity"/>
+        <activity android:name=".ui.product.EditProductActivity"/>
+
+
+
+
     </application>
 
 </manifest>

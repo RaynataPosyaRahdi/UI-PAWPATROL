@@ -2,106 +2,123 @@ package com.example.pawpatrol.ui.auth.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pawpatrol.api.RetrofitClient
-import com.example.pawpatrol.models.user.LoginRequest
-import com.example.pawpatrol.databinding.ActivityLoginBinding
-import com.example.pawpatrol.models.user.LoginResponse
-import com.example.pawpatrol.ui.main.MainActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.pawpatrol.ui.DashboardActivity
+import com.example.pawpatrol.api.ApiClient
+import com.example.pawpatrol.databinding.ActivityLoginBinding
+import com.example.pawpatrol.models.user.LoginRequest
+import com.example.pawpatrol.session.SessionManager
+import com.example.pawpatrol.ui.auth.register.RegisterActivity
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
+    private lateinit var sessionManager: SessionManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding =
+            ActivityLoginBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
+
+        sessionManager =
+            SessionManager(this)
+
+        setupAction()
+    }
+
+    private fun setupAction() {
 
         binding.btnLogin.setOnClickListener {
 
-            val email = binding.etEmail.text.toString().trim()
+            val email =
+                binding.etEmail.text.toString()
 
-            val password = binding.etPassword.text.toString().trim()
+            val password =
+                binding.etPassword.text.toString()
 
-            if (email.isEmpty() || password.isEmpty()) {
+            login(
+                email,
+                password
+            )
+        }
 
-                Toast.makeText(
+        binding.tvRegister.setOnClickListener {
+            startActivity(
+                Intent(
                     this,
-                    "Email dan password wajib diisi",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                return@setOnClickListener
-            }
-
-            loginUser(email, password)
+                    RegisterActivity::class.java
+                )
+            )
         }
     }
 
-
-    private fun loginUser(
+    private fun login(
         email: String,
         password: String
     ) {
-
-        val request = LoginRequest(
-            email = email,
-            password = password
-        )
 
         lifecycleScope.launch {
 
             try {
 
                 val response =
-                    RetrofitClient.create(this@LoginActivity)
-                        .login(request)
+                    ApiClient
+                        .getApiService(this@LoginActivity)
+                        .login(
+                            LoginRequest(
+                                email,
+                                password
+                            )
+                        )
 
                 if (response.isSuccessful) {
 
-                    val loginResponse = response.body()
+                    val body = response.body()
 
-                    val sharedPref = getSharedPreferences(
-                        "USER_SESSION",
-                        MODE_PRIVATE
-                    )
+                    body?.let {
 
-                    sharedPref.edit()
-                        .putString(
+                        sessionManager.saveToken(
+                            it.access_token
+                        )
+
+                        sessionManager.saveUserId(
+                            it.user.id
+                        )
+
+                        Log.d(
                             "TOKEN",
-                            loginResponse?.access_token
+                            sessionManager.getToken().toString()
                         )
-                        .apply()
 
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "Login berhasil",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                    startActivity(
-                        Intent(
+                        Toast.makeText(
                             this@LoginActivity,
-                            MainActivity::class.java
-                        )
-                    )
+                            "Login berhasil",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
-                    finish()
+                        startActivity(
+                            Intent(
+                                this@LoginActivity,
+                                DashboardActivity::class.java
+                            )
+                        )
+
+                        finish()
+                    }
 
                 } else {
 
                     Toast.makeText(
                         this@LoginActivity,
-                        "Login gagal",
+                        "Email atau password salah",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -111,7 +128,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(
                     this@LoginActivity,
                     e.message,
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
             }
         }

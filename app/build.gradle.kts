@@ -3,6 +3,7 @@ import com.android.build.api.dsl.ViewBinding
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -16,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.pawpatrol"
-        minSdk = 24
+        minSdk = 36
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
